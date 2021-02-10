@@ -18,6 +18,7 @@
                 <br>
                 <input type="text" data-bind="value: inputValue"/>
                 <br>
+                <h1 data-bind="text: computed"></h1>
                 <ul data-bind="foreach: list">
                     <li data-bind="text:$data"></li>
                 </ul>
@@ -38,13 +39,9 @@
                 self.list.splice(0,0,100);
             };
 
-            var subscribe = self.inputValue.subscribe(function(novoValor){
-                if(novoValor == "100"){
-                    self.labelText("Certo!");
-                } else {
-                    self.labelText("Errado!");
-                }
-            });
+            self.computed = ko.computed(function(){
+                return self.labelText() + ' || ' + self.inputValue();
+            }, this);
         }
 
         vm = new ViewModel();
