@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Knockout</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <br>
+                <br>
+                <label data-bind="text: labelText">Label</label>
+                <br>
+                <input type="text" data-bind="value: inputValue"/>
+                <br>
+                <br>
+                <button class="btn btn-primary" data-bind="click: buttonAction">Ação</button>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src='knockout-3.5.1.js'></script>
+    <script type="text/javascript">
+        function ViewModel(){
+            var self = this;
+
+            self.labelText = "Label text";
+            self.inputValue = "Input value";
+            self.buttonAction = function(){
+                console.log("Clicked button");
+            };
+        }
+
+        vm = new ViewModel();
+        ko.applyBindings(vm);
+    </script>
+</body>
+</html>
