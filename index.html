@@ -18,7 +18,7 @@
                 <br>
                 <input type="text" data-bind="value: inputValue"/>
                 <br>
-                <h1 data-bind="text: computed"></h1>
+                <h1 data-bind="text: computed()"></h1>
                 <ul data-bind="foreach: list">
                     <li data-bind="text:$data"></li>
                 </ul>
@@ -39,9 +39,9 @@
                 self.list.splice(0,0,100);
             };
 
-            self.computed = ko.pureComputed(function(){
+            self.computed = function(){
                 return self.labelText() + ' || ' + self.inputValue();
-            }, this);
+            };
 
             // self.computed = ko.computed(function(){
             //     var msg = self.inputValue() + " || " + "(Static)"; 
