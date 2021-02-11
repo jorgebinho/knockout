@@ -39,9 +39,15 @@
                 self.list.splice(0,0,100);
             };
 
-            self.computed = ko.computed(function(){
+            self.computed = ko.pureComputed(function(){
                 return self.labelText() + ' || ' + self.inputValue();
             }, this);
+
+            // self.computed = ko.computed(function(){
+            //     var msg = self.inputValue() + " || " + "(Static)"; 
+            //     self.labelText(msg);
+            //     return msg;
+            // }, this);
         }
 
         vm = new ViewModel();
